@@ -3,8 +3,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-from news.models import News
-
 
 def scrape_zoomit_news():
     url = "https://www.zoomit.ir"
@@ -17,7 +15,7 @@ def scrape_zoomit_news():
     articles = soup.select("a.fNLyDV")
 
     news_list = []
-    for article in articles[:5]:  # limit to first 10
+    for article in articles:
         link = article.get("href")
         if not link.startswith("http"):
             link = "https://www.zoomit.ir" + link
@@ -27,19 +25,10 @@ def scrape_zoomit_news():
             continue
 
         article_soup = BeautifulSoup(article_resp.text, "html.parser")
-        print(article_soup)
         title = article_soup.select_one("h1").text.strip() if article_soup.select_one("h1") else ""
         paragraphs = article_soup.select("p.joXpaW")
         content = " ".join([p.get_text(strip=True) for p in paragraphs])
         tags = [tag.get_text(strip=True) for tag in article_soup.select("span.NawFH")]
-
-        news = News.objects.create(
-            title=title,
-            content=content,
-            tags=tags,
-            source="Zoomit.ir"
-        )
-
 
         news_list.append({
             "title": title,

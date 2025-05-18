@@ -1,0 +1,9 @@
+Django>=4.0
+celery>=5.2
+redis>=4.3
+flower
+requests
+beautifulsoup4
+gunicorn
+django-celery-beat
+djangorestframework
