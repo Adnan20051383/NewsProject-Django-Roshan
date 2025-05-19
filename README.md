@@ -1,6 +1,6 @@
 # 📰 NewsProject-Django_Roshan
 
-**NewsProject-Django_Roshan** is a Dockerized Django application that scrapes the latest news articles from [Zoomit.ir](https://www.zoomit.ir), filters them based on tags and keywords, and stores them in a PostgreSQL database. It uses **Celery with Redis** for periodic background task execution and **Flower** for task monitoring.
+**NewsProject-Django_Roshan** is a Dockerized Django application that scrapes the latest news articles from [Zoomit.ir](https://www.zoomit.ir), filters them based on tags and keywords, and stores them in a SQLITE database. It uses **Celery with Redis** for periodic background task execution and **Flower** for task monitoring.
 
 ---
 
@@ -8,7 +8,7 @@
 
 - 🔁 Periodic scraping of [Zoomit.ir](https://www.zoomit.ir) using Celery & Beat  
 - 🏷️ News filtering based on tags, included/excluded keywords  
-- 💾 Persistent storage using PostgreSQL  
+- 💾 Persistent storage using SQLITE  
 - 📡 RESTful API using Django REST Framework  
 - 📈 Task monitoring with Flower  
 - 🐳 Fully Dockerized with Docker & Docker Compose  
@@ -108,14 +108,6 @@ To stop and remove volumes and networks:
 ```bash
 docker-compose down --volumes --remove-orphans
 ```
-
----
-
-## 📬 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 ## 🙋‍♂️ Contributing
 
